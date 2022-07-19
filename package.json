@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0"
+  },
+  "name": "babysitter-kata",
+  "version": "1.0.0",
+  "description": "A programming solution to the babysitter kata (https://gist.github.com/jameskbride/5482722) using JavaScript & unit testing.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Walden Li",
+  "license": "ISC"
+}
