@@ -93,21 +93,18 @@ describe("Babysitter time setters", function () {
         expect(babysitter.endTime).to.be.equal(4);
     });
     it("should reject a start time before 5:00 PM", function () {
-        babysitter.workerStartTime = 16;
         expect(function () {
-            return babysitter.startTime;
+            babysitter.workerStartTime = 16;
         }).to.throw("Start Time must be before 5:00 PM!");
     });
     it("should reject a bedtime after midnight", function () {
-        babysitter.babyBedTime = 1;
         expect(function () {
-            return babysitter.bedTime;
+            babysitter.babyBedTime = 1;
         }).to.throw("Bedtime must be before 12:00 AM!");
     });
     it("should reject an end time after 4:00 AM", function () {
-        babysitter.workerEndTime = 5;
         expect(function () {
-            return babysitter.endTime;
+            babysitter.workerEndTime = 5;
         }).to.throw("End Time must be before 4:00 AM!");
     });
 });
