@@ -122,7 +122,7 @@ describe("Babysitter.calculateTimeIntervals", function () {
     // edge cases
     it("should correctly calculate intervals when bedtime is midnight", function () {
         babysitter.workerStartTime = 17;
-        babysitter.babyBedTime = 0;
+        babysitter.babyBedTime = 24;
         babysitter.workerEndTime = 4;
         babysitter.calculateTimeIntervals();
         expect(babysitter.hoursFromStartToBedtime).to.be.equal(5);
