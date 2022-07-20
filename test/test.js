@@ -120,19 +120,23 @@ describe("Babysitter.calculateTimeIntervals", function () {
         expect(babysitter.calculateTimeIntervals).to.be.a("function");
     });
     // edge cases
-    it("should correctly calculate charge when bedtime is midnight", function () {
+    it("should correctly calculate intervals when bedtime is midnight", function () {
         babysitter.workerStartTime = 17;
         babysitter.babyBedTime = 0;
         babysitter.workerEndTime = 4;
         babysitter.calculateTimeIntervals();
-        expect(babysitter.calculateCharge()).to.be.equal(124);
+        expect(babysitter.hoursFromStartToBedtime).to.be.equal(5);
+        expect(babysitter.hoursFromBedtimeToMidnight).to.be.equal(0);
+        expect(babysitter.hoursFromMidnightToEnd).to.be.equal(4);
     });
     it("should correctly calculate charge when bedtime is start time", function () {
         babysitter.workerStartTime = 17;
         babysitter.babyBedTime = 17;
         babysitter.workerEndTime = 4;
         babysitter.calculateTimeIntervals();
-        expect(babysitter.calculateCharge()).to.be.equal(104);
+        expect(babysitter.hoursFromStartToBedtime).to.be.equal(0);
+        expect(babysitter.hoursFromBedtimeToMidnight).to.be.equal(5);
+        expect(babysitter.hoursFromMidnightToEnd).to.be.equal(4);
     });
     // illegal cases
     it("should throw an error when start time is before 5:00 PM", function () {
