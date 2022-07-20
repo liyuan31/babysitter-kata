@@ -1,3 +1,8 @@
+/**
+ * The Babysitter class encapsulates a babysitter with fixed hourly rate and
+ * hours worked in different time frames as attributes, and has methods to
+ * calculate the charge for a specific shift.
+ */
 class Babysitter {
     constructor() {
         this.hourlyRateFromStartToBedtime = 12;
