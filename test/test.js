@@ -4,6 +4,7 @@ const expect = require("chai").expect;
 // Import Babysitter class
 const Babysitter = require("../src/main").Babysitter;
 
+// Babysitter class base
 describe("Babysitter constructor", function () {
     let babysitter;
 
@@ -31,6 +32,7 @@ describe("Babysitter constructor", function () {
     });
 });
 
+// Function Babysitter.calculateCharge
 describe("Babysitter.calculateCharge", function () {
     let babysitter;
 
@@ -73,6 +75,7 @@ describe("Babysitter.calculateCharge", function () {
     });
 });
 
+// Time setters
 describe("Babysitter time setters", function () {
     let babysitter;
 
@@ -109,6 +112,7 @@ describe("Babysitter time setters", function () {
     });
 });
 
+// Function Babysitter.calculateTimeIntervals
 describe("Babysitter.calculateTimeIntervals", function () {
     let babysitter;
 
@@ -125,7 +129,7 @@ describe("Babysitter.calculateTimeIntervals", function () {
         babysitter.babyBedTime = 24;
         babysitter.workerEndTime = 4;
         babysitter.calculateTimeIntervals();
-        expect(babysitter.hoursFromStartToBedtime).to.be.equal(5);
+        expect(babysitter.hoursFromStartToBedtime).to.be.equal(7);
         expect(babysitter.hoursFromBedtimeToMidnight).to.be.equal(0);
         expect(babysitter.hoursFromMidnightToEnd).to.be.equal(4);
     });
@@ -135,19 +139,13 @@ describe("Babysitter.calculateTimeIntervals", function () {
         babysitter.workerEndTime = 4;
         babysitter.calculateTimeIntervals();
         expect(babysitter.hoursFromStartToBedtime).to.be.equal(0);
-        expect(babysitter.hoursFromBedtimeToMidnight).to.be.equal(5);
+        expect(babysitter.hoursFromBedtimeToMidnight).to.be.equal(7);
         expect(babysitter.hoursFromMidnightToEnd).to.be.equal(4);
     });
-    // illegal cases
+    // illegal time relations
     it("should throw an error when bedtime is before start time", function () {
         babysitter.workerStartTime = 20;
         babysitter.babyBedTime = 17;
-        expect(function () {
-            babysitter.calculateTimeIntervals();
-        }).to.throw("Start time must be before bedtime!");
-    });
-    it("should throw an error when bedtime is after midnight", function () {
-        babysitter.babyBedTime = 2;
         expect(function () {
             babysitter.calculateTimeIntervals();
         }).to.throw("Start time must be before bedtime!");
