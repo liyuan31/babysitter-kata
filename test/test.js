@@ -139,12 +139,6 @@ describe("Babysitter.calculateTimeIntervals", function () {
         expect(babysitter.hoursFromMidnightToEnd).to.be.equal(4);
     });
     // illegal cases
-    it("should throw an error when start time is before 5:00 PM", function () {
-        babysitter.workerStartTime = 16;
-        expect(function () {
-            babysitter.calculateTimeIntervals();
-        }).to.throw("Start time must be after 5:00 PM!");
-    });
     it("should throw an error when bedtime is before start time", function () {
         babysitter.workerStartTime = 20;
         babysitter.babyBedTime = 17;
@@ -154,13 +148,6 @@ describe("Babysitter.calculateTimeIntervals", function () {
     });
     it("should throw an error when bedtime is after midnight", function () {
         babysitter.babyBedTime = 2;
-        expect(function () {
-            babysitter.calculateTimeIntervals();
-        }).to.throw("Start time must be before bedtime!");
-    });
-    it("should throw an error when end time is after 4:00 AM", function () {
-        babysitter.workerStartTime = 20;
-        babysitter.babyBedTime = 17;
         expect(function () {
             babysitter.calculateTimeIntervals();
         }).to.throw("Start time must be before bedtime!");
